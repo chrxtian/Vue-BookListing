@@ -2,16 +2,19 @@
   <div>
     <h1>{{title}}</h1>
     <ul>
-      <li v-for="book in books">
-        {{book.title}}:{{book.author}}
-      </li>
+      <book-item v-for="book in books" v-bind:book="book" v-bind:key="book.title"></book-item>
     </ul>
   </div>
 </template>
 
 <script>
+
+import BookItem from './BookItem';
 export default {
   name: "BookList",
+  components: {
+    BookItem
+  },
   data: () => ({
     title: 'All Books',
     books: [
